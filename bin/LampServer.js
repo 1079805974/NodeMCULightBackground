@@ -5,7 +5,7 @@ var HOST = '0.0.0.0'
 var PORT = 10086
 var nodemcuSocket = null, nodemcuSocket2 = null
 net.createServer(function (socket) {
-    if(nodemcu == null){
+    if(nodemcuSocket == null){
         nodemcuSocket = socket
         console.log('第一个NodeMCU连接!')
         nodemcuSocket.on('data', function (data) {

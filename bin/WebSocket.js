@@ -29,7 +29,7 @@ webSocketServer.on('connection', function (socket) {
         //触发来消息事件, 不用看懂...
         //只要知道在LampServer中怎么用就行了
         webs.emitOnMessage(message)
-        //回传消息
+        //回传消息, 看懂后注释掉
         socket.send('收到你的消息啦!!!')
     });
     socket.on('disconnect', function () { });

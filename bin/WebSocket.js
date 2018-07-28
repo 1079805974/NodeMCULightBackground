@@ -4,10 +4,13 @@ var webSocketServer = require('socket.io')(8080);
 webSocketServer.on('connection', function (socket) {
     console.log('connect!')
     socket.on('message', function incoming(message) {
-        consoel.log(new Date().toString+' 网页传来消息: '+message)
+        console.log(new Date().toLocaleString()+' 网页传来消息: '+message)
         //把传来的消息发给第一个NodeMCU
         if(nodemcuSocket!=null)
             nodemcuSocket.write(message)
+
+        //回传消息
+        socket.send('收到你的消息啦!!!')
     });
   socket.on('disconnect', function () { });
 });

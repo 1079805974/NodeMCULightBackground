@@ -3,8 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var lampRouter = require('./routes/lamp');
-var sensorRouter = require('./routes/sensor');
 
 var app = express();
 
@@ -22,9 +20,6 @@ app.use((req,res,next)=>{
     res.append('Access-Control-Allow-Origin','*')
     next()
 })
-
-app.use('/lamp', lampRouter);
-app.use('/sensor', sensorRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=>{

@@ -7,8 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('noderewrite:server');
 var http = require('http');
-var lamp = require('./LampServer')
-var ws = require('./WebSocket')
 /**
  * Get port from environment and store in Express.
  */

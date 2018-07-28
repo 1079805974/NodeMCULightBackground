@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>manual.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="111-%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0">1.1.1 项目名称</h1>
+<p>可通过wifi远程控制的灯及传感器软件部分</p>
+<h1 id="112-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98">1.1.2 项目开发人员</h1>
+<p>李井瑞</p>
+<h1 id="113-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">1.1.3	项目开发环境</h1>
+<p><code>Intellij IDEA</code> ＋ <code>NodeJS</code> + <code>NodeMCU</code> + <code>Lua</code></p>
+<h1 id="114-%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E8%AE%BE%E5%AE%9A">1.1.4	系统功能设定</h1>
+<p>软件部分分为3大模块, <code>Gateway</code>部分, 灯泡部分, 传感器部分：<br>
+<br></p>
+<h2 id="1gateway%E9%83%A8%E5%88%86">1.<code>Gateway</code>部分</h2>
+<pre><code> 用户控制接口, 云端交互, 数据记录相关功能：
+这部分由NodeJS写成, 用json与灯泡和传感器进行交互。并开放与用户交互的接口。
+</code></pre>
+<h3 id="lampserverjs"><code>LampServer.js</code></h3>
+<p>该模块通过监听Gateway的18323端口, 获得灯泡的连接, 引入该模块后, 获取接入的灯泡实例, 并为特定灯泡添加事件监听。</p>
+<p>引入该模块：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> lamps = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./LampServer'</span>)
+</div></code></pre>
+<p><code>lamps</code>为灯泡列表, 底层为<code>JavaScript</code>数组</p>
+<p>获取灯泡实例的方法:</p>
+<h4 id="1%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84">1.遍历数组</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> lamps){
+    <span class="hljs-comment">//your code</span>
+}
+</div></code></pre>
+<h4 id="2get%E6%96%B9%E6%B3%95">2.get方法</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> lamp = lamps.get(id:<span class="hljs-built_in">string</span>)
+<span class="hljs-comment">//your code</span>
+</div></code></pre>
+<h4 id="3%E7%9B%91%E5%90%AC%E5%99%A8">3.监听器</h4>
+<pre class="hljs"><code><div>lamps.onLogin = <span class="hljs-function">(<span class="hljs-params">msg: <span class="hljs-built_in">Object</span>, lamp: <span class="hljs-built_in">Object</span></span>) =&gt;</span> {
+    <span class="hljs-comment">//your code</span>
+}
+</div></code></pre>
+<p>类似的监听器还有五个, 分别是:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">监听器名称</th>
+<th style="text-align:left">触发事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">onResult</td>
+<td style="text-align:left">当收到某一灯泡返回命令结果时</td>
+</tr>
+<tr>
+<td style="text-align:right">onWarning</td>
+<td style="text-align:left">当收到某一灯泡低电压警告时</td>
+</tr>
+<tr>
+<td style="text-align:right">onMessage</td>
+<td style="text-align:left">当收到任何消息时</td>
+</tr>
+<tr>
+<td style="text-align:right">onError</td>
+<td style="text-align:left">当收到某一灯泡出现错误时</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E6%B3%A8%E6%84%8F-lamps%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%9B%91%E5%90%AC%E5%99%A8%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA-%E5%90%8E%E8%AE%BE%E5%AE%9A%E7%9A%84%E7%9B%91%E5%90%AC%E5%99%A8%E4%BC%9A%E6%9B%BF%E6%8D%A2%E5%89%8D%E9%9D%A2%E7%9A%84%E7%9B%91%E5%90%AC%E5%99%A8">注意: lamps对象的监听器只有一个, 后设定的监听器会替换前面的监听器</h4>
+<p>也可以为特定灯泡添加事件监听, 事件只有特定灯泡触发:<br>
+(一个灯泡可以有多个监听器, 依次被调用)</p>
+<pre class="hljs"><code><div>lamp.addListener(‘eventType’, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg: Object</span>)</span>{
+    <span class="hljs-comment">//your code</span>
+})
+</div></code></pre>
+<p><code>eventType</code>共有四种,分别是: <code>message</code>, <code>info</code>, <code>warning</code>, <code>error</code></p>
+<ul>
+<li>注意: <code>eventType</code>并不包含<code>result</code>, <code>result</code>消息的处理应当写在<a href="#jump">相关API</a>的<code>&quot;callback&quot;</code>中</li>
+</ul>
+<p>Lamp类：</p>
+<pre class="hljs"><code><div>Lamp : 
+{
+    <span class="hljs-attr">Id</span>: 灯的ID,
+    Birghtness：白灯亮度值, 
+    <span class="hljs-attr">Blue</span>: 蓝灯色调值,
+    Red：红灯色调值, 
+    Green：绿灯色调值, 
+    IP：灯的网络IP,
+    <span class="hljs-attr">Position</span>: 灯的位置, 
+    Name：灯的名字, 
+    <span class="hljs-attr">Voltage</span>:灯的电压
+}
+</div></code></pre>
+<p><span id = "jump">相关API</span>:</p>
+<pre class="hljs"><code><div>lamp.setPosition(postion:<span class="hljs-built_in">string</span>, [<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+lamp.setName(name:<span class="hljs-built_in">string</span>, [<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+lamp.setBrightness(brightness:<span class="hljs-built_in">number</span>,[<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+lamp.setColor(red:<span class="hljs-built_in">number</span>, green:<span class="hljs-built_in">number</span>, blue:<span class="hljs-built_in">number</span>,[<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+</div></code></pre>
+<h3 id="sensorserverjs"><code>SensorServer.js</code></h3>
+<p>传感器服务通过监听<code>18324</code>端口, 进行与传感器的交互。相关监听器处理方式与<code>LampServer</code>相似。</p>
+<p>相关API:</p>
+<pre class="hljs"><code><div>sensor.setPosition(postion:<span class="hljs-built_in">string</span>, [<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+sensor.setName(name:<span class="hljs-built_in">string</span>, [<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+sensor.setInterval(interval:<span class="hljs-built_in">number</span>, [<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">result</span>)</span>{})
+</div></code></pre>
+<h2 id="2%E7%81%AF%E6%B3%A1%E9%83%A8%E5%88%86">2.灯泡部分</h2>
+<p><code>wifi灯泡</code>的软件部分主要架构为：</p>
+<pre class="hljs"><code><div>-src
+|--INIT_DATA
+|--init.lua
+|--constants.lua
+|--LampInit.lua
+|--LampSocket.lua
+</div></code></pre>
+<p>其在NodeMCU的运行顺序同上.</p>
+<h4 id="1-initdata">1. <code>INIT_DATA</code></h4>
+<p>该文件储存灯泡的初始化信息, 并且在用户设置亮度、位置和名字信息后进行持久化保存。<br>
+该文件只有一行, 而且为标准的<code>JSON</code>格式, <code>id</code>为<code>&quot;ABCD&quot;</code>灯泡的<code>INIT_DATA</code>示例：</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"blue"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"id"</span>:<span class="hljs-string">"ABCD"</span>,<span class="hljs-attr">"position"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"userLevel"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"name"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"green"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"IP"</span>:<span class="hljs-string">"null"</span>,<span class="hljs-attr">"brightness"</span>:<span class="hljs-number">500</span>,<span class="hljs-attr">"red"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"voltage"</span>:<span class="hljs-number">3.153</span>}
+</div></code></pre>
+<ul>
+<li>其中的<code>voltage</code>属性会在通电后自动获取, <code>IP</code>属性会在连接Wifi后自动获取</li>
+</ul>
+<h4 id="2-initlua">2. <code>init.lua</code></h4>
+<p>该文件是<code>NodeMCU</code>启动后自动运行的文件。负责调用其它文件。</p>
+<h4 id="3-constantslua">3. <code>constants.lua</code></h4>
+<p>该文件储存灯泡运行的必要信息:</p>
+<pre><code>* wifi SSID 与 密码
+* Gateway IP 与 端口号
+* 各LED引脚信息
+* 控制按钮引脚信息
+* 各用户控制等级 与 PWM占空比 的对应关系
+* 低电压报警下限
+</code></pre>
+<h4 id="4-lampinitlua">4. <code>LampInit.lua</code></h4>
+<p>该文件负责各模块初始化工作.<br>
+各函数作用：
+- <code>initLED</code>: 初始化LED
+- <code>initData</code>: 初始化持久化数据
+- <code>其他</code>: 初始化按钮控制, wifi连接, 低电压监控</p>
+<h4 id="5-lampsocketlua">5. <code>LampSocket.lua</code></h4>
+<p>该文件负责与服务器的交互:</p>
+<pre><code>当运行该文件后, 启动一个名为skcTimer的计时器, 该计时器负责每3秒尝试连接一次服务器,直到连接成功.  
+
+连接服务器成功后, 以`JSON`格式发送`INIT_DATA`数据, 进行登陆.  
+
+下为一次正确的登陆信息:
+</code></pre>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"type"</span>:<span class="hljs-string">"login"</span>,<span class="hljs-attr">"blue"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"id"</span>:<span class="hljs-string">"ABCD"</span>,<span class="hljs-attr">"position"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"userLevel"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"name"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"green"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"IP"</span>:<span class="hljs-string">"192.168.1.1"</span>,<span class="hljs-attr">"brightness"</span>:<span class="hljs-number">500</span>,<span class="hljs-attr">"red"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"voltage"</span>:<span class="hljs-number">3.153</span>}
+</div></code></pre>
+<h4 id="6-%E5%BC%80%E6%94%BEapi">6. <code>开放API</code></h4>
+<p><strong>注意: 硬件端口API只对Gateway开放.</strong></p>
+<p>以下为Lua API以及Gateway调用该API发送的JSON示例</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVoltage</span><span class="hljs-params">()</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setBrightness</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setColor</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPosition</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>以上方法都可以通过发送如下JSON调用:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"cmd"</span>: <span class="hljs-string">"getVoltage/setName/setBrightness/setColor"</span>,
+<span class="hljs-attr">"arg"</span>: <span class="hljs-string">"***"</span>}
+</div></code></pre>
+<p>调用该api可以发送lua脚本到NodeMCU, 达到在线升级的效果.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">script</span><span class="hljs-params">(script)</span></span> <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>调用方式:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"cmd"</span>: <span class="hljs-string">"script"</span>, <span class="hljs-attr">"script"</span>: <span class="hljs-string">"***"</span>}
+</div></code></pre>
+<h2 id="3%E4%BC%A0%E6%84%9F%E5%99%A8%E9%83%A8%E5%88%86">3.传感器部分</h2>
+<p><code>wifi传感器</code>的软件部分主要架构为：</p>
+<pre class="hljs"><code><div>-src
+|--INIT_DATA
+|--init.lua
+|--constants.lua
+|--GY30.lua
+|--SensorInit.lua
+|--SensorSocket.lua
+</div></code></pre>
+<p>其在NodeMCU的运行顺序同上.</p>
+<h4 id="1-initdata-initlua-constanslua">1. <code>INIT_DATA</code>, <code>init.lua</code>, <code>constans.lua</code></h4>
+<p>该模块<code>INIT_DATA</code>, <code>init.lua</code>, <code>constants.lua</code>与灯泡模块大体相同, 请参阅上一部分.</p>
+<h4 id="2-gy30lua">2. <code>GY30.lua</code></h4>
+<p>该模块通过I2C接口对GY30传感器进行读取</p>
+<pre><code>### 主要函数:
+</code></pre>
+<ul>
+<li>
+<p><code>initGY30(sda, scl)</code>:</p>
+<p>参数:<br>
+sda: sda针脚; scl: scl针脚</p>
+<p>功能:<br>
+初始化传感器</p>
+</li>
+<li>
+<p><code>readGY30(mode, func)</code>:<br>
+参数:<br>
+mode: 读取模式; func: 回调函数</p>
+<p>功能:<br>
+读取GY30</p>
+</li>
+</ul>
+<h4 id="3-sensorinitlua">3. <code>SensorInit.lua</code></h4>
+<p>负责初始化数据, 初始化低电压警报, 初始化wifi连接.</p>
+<h4 id="4-sensorsocketlua">4. <code>SensorSocket.lua</code></h4>
+<p>该文件负责与服务器的交互:</p>
+<pre><code>当运行该文件后, 启动一个名为skcTimer的计时器, 该计时器负责每3秒尝试连接一次服务器,直到连接成功.  
+
+连接服务器成功后, 以`JSON`格式发送`INIT_DATA`数据, 进行登陆.  
+
+下为一次正确的登陆信息:
+</code></pre>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"type"</span>:<span class="hljs-string">"login"</span>,<span class="hljs-attr">"id"</span>:<span class="hljs-string">"poiuytrewq"</span>,<span class="hljs-attr">"position"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"voltage"</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">"name"</span>:<span class="hljs-string">"unknown"</span>,<span class="hljs-attr">"IP"</span>:<span class="hljs-string">"192.168.1.1"</span>,<span class="hljs-attr">"interval"</span>:<span class="hljs-number">2000</span>}
+</div></code></pre>
+<h4 id="5-%E5%BC%80%E6%94%BEapi">5. <code>开放API</code></h4>
+<p><strong>注意: 硬件API只对Gateway开放.</strong></p>
+<p>以下为Lua API以及Gateway调用该API发送的JSON示例</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVoltage</span><span class="hljs-params">()</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setBrightness</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setColor</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPosition</span><span class="hljs-params">(string)</span></span> <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>以上方法都可以通过发送如下JSON调用:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"cmd"</span>: <span class="hljs-string">"getVoltage/setName/setBrightness/setColor"</span>,
+<span class="hljs-attr">"arg"</span>: <span class="hljs-string">"***"</span>}
+</div></code></pre>
+<p>调用该api可以发送lua脚本到NodeMCU, 达到在线升级的效果.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">script</span><span class="hljs-params">(script)</span></span> <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>调用方式:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"cmd"</span>: <span class="hljs-string">"script"</span>, <span class="hljs-attr">"script"</span>: <span class="hljs-string">"***"</span>}
+</div></code></pre>
+<hr>
+<ul>
+<li>每收到一条服务器的命令, 硬件都会返回一条由<code>{&quot;type&quot;:&quot;result&quot;}</code>扩充而成的消息.</li>
+</ul>
+
+</body>
+</html>

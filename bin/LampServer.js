@@ -137,8 +137,8 @@ dispatch['login'] = (msg, socket) => {
     }
     lamps.push(lamp)
     socket.lamp = lamp
-    lamps.onLogin(msg, socket.lamp)
-    lamp.addListener('warning',function (msg) {
+    lamps.onLogin(msg, lamp)
+    lamp.addListener('warning', function (msg) {
         lamp.voltage = msg.voltage
     })
 }

@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 const lamps = require('./LampServer')
 const sensors = require('./SensorServer')
 const server = require('./www')
-const wss = new WebSocket.Server({server:server,path:'/socket'});
+const wss = new WebSocket.Server({server:server, path:'/socket'});
 
 lamps.onMessage = function(msg, lamp){
     msg.id = lamp.id

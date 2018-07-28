@@ -14,7 +14,8 @@ webSocketServer.on('connection', function connection(webSocket) {
     webSocket.on('message', function incoming(message) {
         consoel.log(new Date().toString+' 网页传来消息: '+message)
         //把传来的消息发给第一个NodeMCU
-        nodemcuSocket.write(message)
+        if(nodemcuSocket!=null)
+            nodemcuSocket.write(message)
     });
 });
 

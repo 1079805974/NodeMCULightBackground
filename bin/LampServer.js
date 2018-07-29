@@ -4,7 +4,7 @@ const webs = require('./WebSocket');
 var HOST = '0.0.0.0'
 var PORT = 10086
 var socket1,socket2
-net.createServer(function (socket) {
+var server = net.createServer(function (socket) {
     if(socket1 == null){
         socket1 = socket
         console.log('第一个NodeMCU连接!')
@@ -34,4 +34,6 @@ net.createServer(function (socket) {
             socket.remoteAddress + ' ' + socket.remotePort)
     });
 
-}).listen(PORT, HOST);
+})
+server.on('error', e=>console.log)
+server.listen(PORT, HOST)

@@ -1,5 +1,4 @@
-const server = require('./www')
-var webSocketServer = require('socket.io')(server);
+var webSocketServer = require('socket.io')(8080);
 
 var webs = {
     clients: [],
